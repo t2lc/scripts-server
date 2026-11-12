@@ -1,0 +1,3 @@
+# Fichiers de configuration remplis (contiennent IP et secrets).
+# Seuls les modèles *.conf.example sont versionnés.
+*.conf

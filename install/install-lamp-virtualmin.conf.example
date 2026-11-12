@@ -1,0 +1,51 @@
+# ========================================
+# Configuration de install-lamp-virtualmin.sh
+#
+# Copier ce fichier en install-lamp-virtualmin.conf (à côté du script),
+# puis remplacer TOUTES les valeurs ci-dessous.
+# Le script refuse de démarrer tant qu'il reste une IP d'exemple
+# (192.0.2.x, 198.51.100.x, 203.0.113.x, 2001:db8::) ou un CHANGE_ME.
+#
+# Ce fichier rempli contient des secrets : ne jamais le versionner
+# (il est exclu par le .gitignore du dépôt).
+# ========================================
+
+# ---------- Réseau ----------
+# IPv4 publique du serveur (URL Webmin / phpMyAdmin)
+varIp="203.0.113.10"
+# IPv6 publique du serveur (/etc/network/interfaces)
+varIpv6="2001:db8::10"
+# Passerelle IPv6 fournie par l'hébergeur
+varGateway="2001:db8::1"
+# Chemin d'accès à phpMyAdmin : http://<serveur>/<pmaSymlink>
+pmaSymlink="CHANGE_ME"
+
+# ---------- SSH ----------
+# Dossier et nom de la clé SSH générée pour l'utilisateur ubuntu
+publicKeyPath="/home/ubuntu/.ssh"
+publicKeyName="keyname"
+# Commentaire de la clé générée
+sshKeyComment="admin@example.com"
+# Port SSH personnalisé
+sshPort="2222"
+
+# ---------- Firewall (UFW) ----------
+# IP fixe autorisée en administration (SSH + Webmin) : VPS de secours
+adminIpBackup="198.51.100.20"
+# IP fixe autorisée en administration (SSH + Webmin) : accès principal
+adminIpMain="198.51.100.30"
+# IP bannies (tous ports). Peut rester vide : bannedIps=()
+bannedIps=("192.0.2.66" "192.0.2.67")
+
+# ---------- Rclone (Object Storage S3, ex. OVH) ----------
+rcloneObjectName="MyObjectStorage"
+rcloneBucket="CHANGE_ME"
+rcloneAccessKeyId="CHANGE_ME"
+rcloneSecretAccessKey="CHANGE_ME"
+rcloneRegion="gra"
+rcloneLocationConstraint="gra"
+rcloneEndpoint="https://s3.gra.io.cloud.ovh.net/"
+
+# ---------- Backup ----------
+# Clé publique SSH autorisée pour l'utilisateur backup-manager
+backupManagerPublicKey="ssh-ed25519 AAAA... user@host"

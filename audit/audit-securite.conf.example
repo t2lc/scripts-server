@@ -1,0 +1,23 @@
+# ========================================
+# Configuration de audit-securite.sh (facultative)
+#
+# Copier ce fichier en audit-securite.conf à côté du script pour l'utiliser,
+# ou le passer avec -c. Sans fichier, les valeurs par défaut s'appliquent.
+# ========================================
+
+# Ports qui peuvent être ouverts à tout Internet (séparés par des espaces)
+ALLOWED_PUBLIC_PORTS="80 443"
+
+# Ports d'administration : doivent être restreints à des IP précises.
+# Le ou les ports SSH détectés sont ajoutés automatiquement.
+# 10000 = Webmin, 20000 = Usermin, 8006 = Proxmox VE, 9090 = Cockpit
+ADMIN_PORTS="10000 20000 8006 9090"
+
+# Nombre de jours sans connexion au-delà duquel un compte est signalé
+MAX_INACTIVE_DAYS=90
+
+# Racines web à inspecter (motifs glob acceptés)
+WEB_ROOTS="/var/www /srv/www /home/*/public_html"
+
+# Durée maximale (secondes) de chaque recherche dans le système de fichiers
+FIND_TIMEOUT=300

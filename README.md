@@ -26,6 +26,7 @@ Les scripts sont rangés par **domaine fonctionnel**, et non par machine :
 | `firewall/` | Règles de pare-feu (UFW), mise à jour d'IP dynamiques |
 | `backup/` | Sauvegardes (backup-manager, rclone, object storage) |
 | `network/` | Réseau, VPN (WireGuard), routage |
+| `audit/` | Contrôles de sécurité en lecture seule et rapports |
 
 Un dossier n'est créé que lorsqu'il contient au moins un script. Un script qui a des fichiers compagnons (unités systemd, exemple de configuration, README) a son propre sous-dossier, par exemple `firewall/ufw-ddns/`.
 
@@ -40,6 +41,7 @@ Conventions :
 |---|---|---|
 | [`install/install-lamp-virtualmin.sh`](install/install-lamp-virtualmin.sh) | Serveur LAMP + Virtualmin, Docker, backups (backup-manager + rclone vers OVH Object Storage), UFW | VPS Ubuntu 24.04 |
 | [`install/install-semaphore.sh`](install/install-semaphore.sh) | Semaphore UI + Ansible, service systemd dédié, base SQLite, script rejouable | LXC Ubuntu 26.04 |
+| [`audit/audit-securite.sh`](audit/audit-securite.sh) | Audit de sécurité en lecture seule (ports et pare-feu, SSH, comptes et sudo, permissions, services, sysctl, Apache/PHP/MySQL, Docker) avec rapport Markdown et plan d'action. Configuration facultative (`audit-securite.conf.example`). Code de sortie 0/1/2 selon la gravité | Ubuntu 24.04 / 26.04 |
 
 ## Licence
 

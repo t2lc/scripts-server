@@ -1,0 +1,22 @@
+# ========================================
+# Configuration de sync-ovh-snapshot-cross-region.sh
+#
+# Copier ce fichier en sync-ovh-snapshot-cross-region.conf (à côté du script),
+# puis remplacer les valeurs. Ne pas versionner le fichier rempli.
+# ========================================
+
+# Dossier de travail : l'image qcow2 y est téléchargée temporairement
+# (prévoir la taille complète d'une image)
+WORK_DIR="/mnt/backup/instance-backup"
+
+# Fichiers openrc OVH (Horizon > API Access) de la région source
+# et de la région de destination
+OPENRC_SOURCE="/mnt/backup/instance-backup/openrc_CHANGE_ME_source.sh"
+OPENRC_DEST="/mnt/backup/instance-backup/openrc_CHANGE_ME_dest.sh"
+
+# Motif (regex grep -E) extrayant le nom de la sauvegarde depuis
+# `openstack image show`, par exemple le nom du plan de sauvegarde OVH
+BACKUP_NAME_PATTERN="plan-(.*)-CHANGE_ME"
+
+# Âge maximal (jours) des images privées conservées dans la région de destination
+RETENTION_DAYS=31

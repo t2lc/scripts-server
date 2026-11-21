@@ -42,6 +42,7 @@ Conventions :
 | [`install/install-lamp-virtualmin.sh`](install/install-lamp-virtualmin.sh) | Serveur LAMP + Virtualmin, Docker, backups (backup-manager + rclone vers OVH Object Storage), UFW | VPS Ubuntu 24.04 |
 | [`install/install-semaphore.sh`](install/install-semaphore.sh) | Semaphore UI + Ansible, service systemd dédié, base SQLite, script rejouable | LXC Ubuntu 26.04 |
 | [`firewall/ufw-cloudflare-sync/`](firewall/ufw-cloudflare-sync/) | Restreint 80/443 aux plages IP officielles Cloudflare (IPv4 et IPv6) dans UFW, sans toucher aux autres ports ; procédure complète et timer systemd quotidien dans le README du dossier | Ubuntu + UFW |
+| [`backup/sync-ovh-snapshot-cross-region.sh`](backup/sync-ovh-snapshot-cross-region.sh) | Copie les sauvegardes automatiques d'instances OVH Public Cloud du jour d'une région vers une autre, puis purge dans la région de destination les copies faites par le script au-delà de N jours (jamais les autres images). Configuration : `sync-ovh-snapshot-cross-region.conf.example` | Ubuntu + client OpenStack |
 | [`audit/audit-securite.sh`](audit/audit-securite.sh) | Audit de sécurité en lecture seule (ports et pare-feu, SSH, comptes et sudo, permissions, services, sysctl, Apache/PHP/MySQL, Docker) avec rapport Markdown et plan d'action. Configuration facultative (`audit-securite.conf.example`). Code de sortie 0/1/2 selon la gravité | Ubuntu 24.04 / 26.04 |
 
 ## Licence

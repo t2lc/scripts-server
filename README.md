@@ -27,6 +27,7 @@ Les scripts sont rangés par **domaine fonctionnel**, et non par machine :
 | `backup/` | Sauvegardes (backup-manager, rclone, object storage) |
 | `network/` | Réseau, VPN (WireGuard), routage |
 | `audit/` | Contrôles de sécurité en lecture seule et rapports |
+| `maintenance/` | Entretien courant des serveurs : nettoyage, mises à jour, rotation |
 
 Un dossier n'est créé que lorsqu'il contient au moins un script. Un script qui a des fichiers compagnons (unités systemd, exemple de configuration, README) a son propre sous-dossier, par exemple `firewall/ufw-ddns/`.
 
@@ -43,6 +44,7 @@ Conventions :
 | [`install/install-semaphore.sh`](install/install-semaphore.sh) | Semaphore UI + Ansible, service systemd dédié, base SQLite, script rejouable | LXC Ubuntu 26.04 |
 | [`firewall/ufw-cloudflare-sync/`](firewall/ufw-cloudflare-sync/) | Restreint 80/443 aux plages IP officielles Cloudflare (IPv4 et IPv6) dans UFW, sans toucher aux autres ports ; procédure complète et timer systemd quotidien dans le README du dossier | Ubuntu + UFW |
 | [`backup/sync-ovh-snapshot-cross-region.sh`](backup/sync-ovh-snapshot-cross-region.sh) | Copie les sauvegardes automatiques d'instances OVH Public Cloud du jour d'une région vers une autre, puis purge dans la région de destination les copies faites par le script au-delà de N jours (jamais les autres images). Configuration : `sync-ovh-snapshot-cross-region.conf.example` | Ubuntu + client OpenStack |
+| [`maintenance/php-versions-cleanup.sh`](maintenance/php-versions-cleanup.sh) | Inventaire des versions PHP installées et de leur utilisation (Apache mod_php, PHP-FPM et vhosts, Virtualmin, CLI, cron, systemd), puis désinstallation guidée des versions inutilisées, avec simulation apt et confirmation renforcée. Options `--report`, `--dry-run`, `--purge` | Ubuntu + PPA ondrej/php |
 | [`audit/audit-securite.sh`](audit/audit-securite.sh) | Audit de sécurité en lecture seule (ports et pare-feu, SSH, comptes et sudo, permissions, services, sysctl, Apache/PHP/MySQL, Docker) avec rapport Markdown et plan d'action. Configuration facultative (`audit-securite.conf.example`). Code de sortie 0/1/2 selon la gravité | Ubuntu 24.04 / 26.04 |
 
 ## Licence
